@@ -1,1 +1,1 @@
-# pythagorhub.
+# pythagorhub.github.io
