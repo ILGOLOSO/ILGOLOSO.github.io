@@ -1,0 +1,66 @@
+name: 'Build and deploy to GitHub Pages'
+description: 'Builds and deploys a Jekyll site to GitHub Pages'
+author: 'Edric Chan'
+inputs:
+  github_token:
+    description: 'The GitHub installation token.'
+    required: true
+  gh_pages_token:
+    description: 'The token used for triggering a deploy request. (This is no longer needed - see https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/m-p/46519/highlight/true#M6551)'
+    required: false
+  gh_pages_branch:
+    description: 'The branch to deploy the Jekyll site to.'
+    default: 'gh-pages'
+    required: false
+  gh_pages_dist_folder:
+    description: 'The folder to build the Jekyll site to.'
+    default: '_site'
+    required: false
+  gh_pages_commit_message:
+    description: 'The commit message to use when deploying the Jekyll site.'
+    required: false
+  remote_repo:
+    description: 'The repository to deploy the Jekyll site to.'
+    required: false
+  jekyll_build_opts:
+    description: 'Options to pass to the Jekyll build command.'
+    required: false
+  committer_username:
+    description: 'The username to use for the committer of the commit.'
+    required: false
+  committer_email:
+    description: 'The email to use for the committer of the commit.'
+    required: false
+  git_force:
+    description: 'Whether to use the --force flag on git push.'
+    default: 'true'
+    required: false
+  override_gh_pages_branch:
+    description: 'Whether to override the gh-pages branch.'
+    default: 'false'
+    required: false
+  gh_pages_add_no_jekyll:
+    description: 'Whether to add the .nojekyll file to the deployed site.'
+    default: 'true'
+    required: false
+  skip_deploy:
+    description: 'Whether to skip deployment after a successful build.'
+    default: 'false'
+    required: false
+  show_bundle_log:
+    description: 'Whether to show detailed logs from the bundle install command.'
+    default: 'false'
+    required: false
+  bundler_version:
+    description: 'A specific version of Bundler to be used.'
+    required: false
+  jekyll_env:
+    description: 'The Jekyll environment to use when building the site. (See https://jekyllrb.com/docs/configuration/environments/)'
+    default: 'production'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'upload-cloud'
+  color: 'green'
